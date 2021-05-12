@@ -1,0 +1,4 @@
+<%= form_with url: post_path(@post), method: :get do |f| %>
+  <%= f.text_area :content %><br>
+  <%= f.submit "Comment" %>
+<% end %>

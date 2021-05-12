@@ -1,0 +1,7 @@
+<%= form_with model: @post do |f| %>
+  <%= f.label :content %><br>
+  <%= f.text_area :content %><br>
+  <%= f.label :picture, "Attachments: " %><br>
+  <%= f.file_field :picture %><br>
+  <%= f.submit %>
+<% end %>

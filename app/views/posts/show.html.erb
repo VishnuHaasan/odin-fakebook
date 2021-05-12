@@ -1,0 +1,32 @@
+<% if @prof == "No" %>
+  <%= @post.user.name %>
+<% else %>
+  <%= link_to @prof.dname, profile_path(@prof) %>
+<% end %>
+<% if @post.picture.attached? %>
+  <%= image_tag @post.picture.variant(resize: "300x300") %>
+<% end %>
+<%= @post.content %><br>
+<p><%= @count %> Likes</p>
+<%= form_with url: post_path(@post), method: :get do |f| %>
+  <% if @like_status == "Liked" %>
+    <%= f.submit "Liked" %><br>
+  <% else %>
+    <%= f.submit "Like" %><br>
+  <% end %>
+<% end %>
+<p>Add a comment</p>
+<%= form_with url: post_path(@post), method: :get do |f| %>
+  <%= f.text_area :text %><br>
+  <%= f.submit "Comment" %>
+<% end %>
+<% @post.comments.each do |comment| %>
+  <% if comment.user.profile %>
+    <%= link_to comment.user.profile.dname, profile_path(comment.user.profile) %><br>
+  <% else %>
+    <%= comment.user.name %><br>
+  <% end %>
+  <%= comment.text %><br>
+  ------------------------------------------------------<br>
+<% end %>
+<%= link_to "Back to Timeline", root_path %>

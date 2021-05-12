@@ -1,0 +1,11 @@
+<%= form_with model: @profile do |f| %>
+  <%= f.label :dpicture, "Display Picture" %>
+  <%= f.file_field :dpicture %><br>
+  <%= f.label :dname, "Display Name" %>
+  <%= f.text_field :dname %><br>
+  <%= f.label :age, "Age" %>
+  <%= f.number_field :age %><br>
+  <%= f.label :bio, "Bio" %>
+  <%= f.text_area :bio %><br>
+  <%= f.submit %>
+<% end %>

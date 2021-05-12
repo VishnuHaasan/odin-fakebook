@@ -1,0 +1,23 @@
+<h1>Posts in your timeline: </h1>
+<% if @prof == "No" %>
+  <%= link_to "Profile", new_profile_path %><br>
+<% else %>
+  <%= link_to "Profile", profile_path(current_user.profile) %><br>
+<% end %>
+<%= link_to "Discover people", users_path %><br>
+<%= link_to "Notifications", friend_requests_path %><br>
+<%= link_to "Logout", destroy_user_session_path, method: :delete %><br>
+<%= link_to "New post", new_post_path %><br>
+<% @posts.each do |post| %>
+  <% if post.user.profile %>
+    <%= image_tag post.user.profile.dpicture.variant(resize: "50x50") %>
+    <%= link_to post.user.profile.dname, profile_path(post.user.profile) %><br>
+  <% else %>
+    <%= post.user.name %><br>
+  <% end %>
+  <% if post.picture.attached? %>
+    <%= image_tag post.picture.variant(resize: "300x300") %>
+  <% end %>
+  <%= link_to post.content, post_path(post) %><br>
+  -----------------------------------------------<br>
+<% end %>

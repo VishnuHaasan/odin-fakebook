@@ -1,0 +1,27 @@
+<%= link_to "Log out",destroy_user_session_path, method: :delete %>
+<h1>Pending friend requests</h1>
+<% if @requests.empty? %>
+  <h3>No pending requests</h3>
+<% else %>
+  <% @requests.each do |req| %>
+    <p>Incoming request: </p>
+    <% sender = User.find(req.sender_id) %>
+    <%= sender.name %><br>
+    <%= form_with url: friend_requests_path, method: :get do |f|%>
+      <%= hidden_field_tag :request, req.id %>
+      <%= f.submit "Accept" %>
+      <%= f.submit "Decline" %>
+    <% end %>
+  <% end %>
+<% end %>
+<% if @sent_requests.empty? %>
+  <h3>No sent prending requests</h3>
+<% else %>
+  <% @sent_requests.each do |req| %>
+    <p>Sent request: </p>
+    <% receiver = User.find(req.receiver_id) %>
+    <%= receiver.name %><br>
+    <%= link_to "Delete the request", friend_request_path(req), method: :delete %><br>
+  <% end %>
+<% end %>
+<%= link_to "Back to Timeline", root_path %>
