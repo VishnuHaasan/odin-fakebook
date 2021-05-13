@@ -10,7 +10,7 @@
 <%= link_to "New post", new_post_path %><br>
 <% @posts.each do |post| %>
   <% if post.user.profile %>
-    <%= image_tag post.user.profile.dpicture.variant(resize: "50x50") %>
+    <%= image_tag post.user.profile.dpicture.variant(resize: "50x50") %><br>
     <%= link_to post.user.profile.dname, profile_path(post.user.profile) %><br>
   <% else %>
     <%= post.user.name %><br>

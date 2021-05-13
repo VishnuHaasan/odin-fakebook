@@ -1,10 +1,10 @@
 <% if @prof == "No" %>
-  <%= @post.user.name %>
+  <%= @post.user.name %><br>
 <% else %>
-  <%= link_to @prof.dname, profile_path(@prof) %>
+  <%= link_to @prof.dname, profile_path(@prof) %><br>
 <% end %>
 <% if @post.picture.attached? %>
-  <%= image_tag @post.picture.variant(resize: "300x300") %>
+  <%= image_tag @post.picture.variant(resize: "300x300") %><br>
 <% end %>
 <%= @post.content %><br>
 <p><%= @count %> Likes</p>
