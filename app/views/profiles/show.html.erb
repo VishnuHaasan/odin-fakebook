@@ -20,6 +20,7 @@
   <h3>You have no friends you lonely asshole</h3>
 <% end %>
 <% unless @posts.nil? %>
+  <h3>User's posts: </h3>
   <% @posts.each do |post| %>
     <%= link_to post.content, post_path(post) %><br>
   <% end %>

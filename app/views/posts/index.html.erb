@@ -10,13 +10,13 @@
 <%= link_to "New post", new_post_path %><br>
 <% @posts.each do |post| %>
   <% if post.user.profile %>
-    <%= image_tag post.user.profile.dpicture.variant(resize: "50x50") %><br>
+    <%= image_tag post.user.profile.dpicture.variant(resize: "50x50") %>`<br>`
     <%= link_to post.user.profile.dname, profile_path(post.user.profile) %><br>
   <% else %>
     <%= post.user.name %><br>
   <% end %>
   <% if post.picture.attached? %>
-    <%= image_tag post.picture.variant(resize: "300x300") %>
+    <%= image_tag post.picture.variant(resize: "300x300") %><br>
   <% end %>
   <%= link_to post.content, post_path(post) %><br>
   -----------------------------------------------<br>
