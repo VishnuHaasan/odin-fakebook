@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one :profile, dependent: :destroy
 
-  after_create :send_welcome_email
+  #after_create :send_welcome_email
 
   def send_welcome_email
     UserMailer.welcome_email(self).deliver
