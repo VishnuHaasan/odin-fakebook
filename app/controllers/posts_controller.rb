@@ -36,6 +36,11 @@ class PostsController < ApplicationController
       end
       redirect_to post_path(@post)
     end
+    if @post.user == current_user
+      @my_post = "True"
+    else
+      @my_post = "False"
+    end
   end
 
   def new
@@ -72,6 +77,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Post deleted!"
+    redirect_to root_path
   end
 
   private

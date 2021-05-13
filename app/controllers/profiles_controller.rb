@@ -33,9 +33,12 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     user  = @profile.user
+    @posts = user.posts
     @friends = current_user.friends
-    if current_user!=@profile.user
-      @friends =  friends.select{|f| user.friends.include?(f)}
+    if current_user!=user
+      @friends =  @friends.select{|f| user.friends.include?(f)}
+    else
+      @my_profile = "True"
     end
   end
 

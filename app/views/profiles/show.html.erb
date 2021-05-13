@@ -19,4 +19,12 @@
 <% else %>
   <h3>You have no friends you lonely asshole</h3>
 <% end %>
+<% unless @posts.nil? %>
+  <% @posts.each do |post| %>
+    <%= link_to post.content, post_path(post) %><br>
+  <% end %>
+<% end %>
+<% if @my_profile == "True" %>
+  <%= link_to "Delete User", user_path(current_user), method: :delete , data: {confirm: "Are you sure?"} %><br>
+<% end %>
 <%= link_to "Back to Timeline", root_path %>
